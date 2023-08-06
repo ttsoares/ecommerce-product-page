@@ -1,5 +1,7 @@
 "use client";
 
+import BMenu from "./BurgerMenu";
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +11,7 @@ import { cartAtom } from "@/app/page";
 
 import CartElm from "./CartElm";
 
-const MENU_LIST = [
+export const MENU_LIST = [
   { text: "Collections", href: "/collections" },
   { text: "Men", href: "/men" },
   { text: "Women ", href: "/women" },
@@ -34,14 +36,18 @@ const Header = () => {
   }
 
   return (
-    <header className="flex w-[80%] h-24 mx-auto items-center justify-between border-b-2 border-red-500">
+    <header className="flex w-full md:w-[80%] h-24 md:mx-auto items-center justify-between border-b-2 border-gray-200">
       <div className="flex items-center ">
-        <div className="w-48 h-8 items-center flex ">
+        {/* Buger menu */}
+        <div className="block md:hidden">
+          <BMenu />
+        </div>
+        <div className="w-36 md:w-48 h-8 items-center flex ">
           <Link href={"/"}>
             <Image src={"/logo.svg"} width={150} height={30} alt="logo" />
           </Link>
         </div>
-        <nav className="flex h-20">
+        <nav className="hidden md:flex h-20 ">
           {MENU_LIST.map((item, index) => (
             <div key={index} className="flex flex-col justify-evenly">
               <div className="w-20 relative text-center">
@@ -54,11 +60,12 @@ const Header = () => {
           ))}
         </nav>
       </div>
+
       {/* card & avatar */}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <div className="px-10 relative" onClick={() => setShowCart(!showCart)}>
           {headerCart.length > 0 && (
-            <p className="absolute -top-2 rounded-xl right-[30px] text-sm text-white px-[9px] bg-orange">
+            <p className="absolute -top-2 right-[30px] text-sm text-white px-[9px] bg-orange rounded-lg">
               {headerCart.length}
             </p>
           )}
@@ -78,7 +85,7 @@ const Header = () => {
           </svg>
           {showCart &&
             (headerCart.length === 0 ? (
-              <div className="flex flex-col w-96 h-72 bg-white absolute top-12 -right-24 shadow-xl">
+              <div className="flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
                 <div className="font-bold text-left h-12 flex my-auto text-lg  border-b-2 border-gray-200">
                   <p className="ml-3">Cart</p>
                 </div>
@@ -90,7 +97,7 @@ const Header = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col w-96 h-fit bg-white absolute top-12 -right-24 shadow-xl">
+              <div className="flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
                 <div className="flex flex-col w-full">
                   <div className="font-bold items-center text-left h-12 flex my-auto text-lg mb-3  border-b-2 border-gray-200">
                     <p className="ml-3">Cart</p>
@@ -108,24 +115,24 @@ const Header = () => {
                     </div>
                   ))}
                   <button
-                    className="w-11/12 h-11 mx-auto  bg-orange text-center px-6 py-3 rounded-lg text-white mb-4"
+                    className="flex mx-auto w-11/12 h-14 bg-orange px-6 py-3 rounded-lg text-white mb-4  font-bold"
                     onClick={checkOut}
                   >
-                    Checkout
+                    <p className="text-center mx-auto">Checkout</p>
                   </button>
                 </div>
               </div>
             ))}
         </div>
         <div
-          className="ring-2 ring-orange rounded-full"
+          className="ring-2 ring-orange rounded-full mr-5"
           onClick={() => setShowCart(!showCart)}
         >
           <Image
             src={"/image-avatar.png"}
             alt="avatar"
-            width={45}
-            height={45}
+            width={35}
+            height={35}
           />
         </div>
       </div>

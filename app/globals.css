@@ -15,44 +15,47 @@
   width: 36px;
   height: 30px;
   left: 36px;
-
   top: 36px;
 }
 
-.bm-burger-bars {
+/* .bm-burger-bars {
   background: #373a47;
-}
+} */
 
-.bm-burger-bars-hover {
+/* .bm-burger-bars-hover {
   background: #a90000;
-}
+} */
 
 .bm-cross-button {
   height: 24px;
   width: 24px;
+  position: absolute;
+  top: 0;
+  left: 13px;
 }
 
 .bm-cross {
-  background: #bdc3c7;
+  background: black;
 }
 
-.bm-menu-wrap {
+/* .bm-menu-wrap {
   position: fixed;
   height: 100%;
-}
+} */
 
 .bm-menu {
-  background: #373a47;
+  background: white;
   padding: 0.3rem 0.3rem 0;
   font-size: 1.15em;
+  width: 17rem;
 }
 
-.bm-morph-shape {
+/* .bm-morph-shape {
   fill: #373a47;
-}
+} */
 
 .bm-item-list {
-  color: #b8b7ad;
+  color: black;
   padding: 0.8em;
 }
 
@@ -61,6 +64,8 @@
 }
 
 .bm-overlay {
+  position: absolute;
+  top: 0px;
   background: rgba(0, 0, 0, 0.3);
 }
 /* styling next link component so that will be a column list of links*/

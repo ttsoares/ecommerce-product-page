@@ -1,21 +1,27 @@
 "use client";
 
 import { slide as Menu } from "react-burger-menu";
-import styles from "./bmStyles.module.css";
+
+import Link from "next/link";
+
+import { MENU_LIST } from "./Header";
 
 const HamburgerMenu = () => (
-  <div className={styles.hamburger}>
+  <div className="relative p-2 text-black">
     <Menu
       customBurgerIcon={<HamburgerIcon />}
       width={"auto"}
-      className={styles.hamburgerPosition}
+      className="left-0 top-0 text-black"
     >
-      <div>
-        <div>Collections</div>
-        <div>Men</div>
-        <div>Women</div>
-        <div>About</div>
-        <div>Contact</div>
+      <div className="w-full h-10"></div>
+      <div className="mt-5 font-bold">
+        {MENU_LIST.map((item, index) => (
+          <div key={index} className="mb-5">
+            <Link onClick={() => ctx.toggleMenu()} href={item.href}>
+              {item.text}
+            </Link>
+          </div>
+        ))}
       </div>
     </Menu>
   </div>
@@ -24,7 +30,7 @@ const HamburgerMenu = () => (
 const HamburgerIcon = () => (
   <div>
     <svg
-      className={styles.iconStyle}
+      className="w-7 h-7"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -39,8 +45,8 @@ const HamburgerIcon = () => (
 
 const BMenu = () => {
   return (
-    <nav className={styles.headerNav}>
-      <div className={styles.headerSubNav}>
+    <nav className="">
+      <div className="flex">
         <HamburgerMenu />
       </div>
       <div></div>

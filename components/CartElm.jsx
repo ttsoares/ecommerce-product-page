@@ -17,11 +17,11 @@ const CartElm = ({ cartProd, removeItem, index }) => {
         height={40}
         className="rounded-lg mr-3"
       />
-      <div className="text-gray-600 mr-3">
+      <div className="text-gray-600 w-full text-sm md:text-base mr-2">
         <p>{oneProduct.title}</p>
         <div className="flex">
           <p> {`$${priceDiscount} x ${quantity}`}</p>
-          <p className="text-black ml-2 font-bold">{`$${total}`}</p>
+          <p className="text-black ml-2 font-bold">{`$${total.toFixed(2)}`}</p>
         </div>
       </div>
 
