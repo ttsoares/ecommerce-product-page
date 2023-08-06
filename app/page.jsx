@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import prevIcon from "/public/icon-previous.svg";
+import nextIcon from "/public/icon-next.svg";
 
 import { useState, useRef } from "react";
 
@@ -35,10 +37,27 @@ export default function Home() {
   const [prod_disp, setProd_disp] = useState(PROD.imgs[0]);
   const [showing, setShowing] = useState(0);
   const quantity = useRef(0);
+  const ind4Mobile = useRef(0);
   const [render, setRender] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const [cart, setCart] = useAtom(cartAtom);
+
+  function incrementMobile() {
+    ind4Mobile.current = ind4Mobile.current + 1;
+    if (ind4Mobile.current > PROD.imgs.length - 1) {
+      ind4Mobile.current = 0;
+    }
+    changeDisp(ind4Mobile.current);
+  }
+
+  function decrementMobile() {
+    ind4Mobile.current = ind4Mobile.current - 1;
+    if (ind4Mobile.current < 0) {
+      ind4Mobile.current = PROD.imgs.length - 1;
+    }
+    changeDisp(ind4Mobile.current);
+  }
 
   function changeDisp(index) {
     setProd_disp(PROD.imgs[index]);
@@ -78,7 +97,20 @@ export default function Home() {
       <div className="flex flex-col md:flex-row md:mt-24 w-full md:w-[90%] h-[600px]">
         {/* left */}
         <div className="flex flex-col w-full md:w-1/2">
-          <div className="md:m-5" onClick={modalShow}>
+          {/* Big image */}
+          <div className="flex md:m-5 relative" onClick={modalShow}>
+            <h2
+              onClick={decrementMobile}
+              className="md:hidden absolute top-36 left-4 w-10 h-10 "
+            >
+              <Image
+                src={prevIcon}
+                width={15}
+                height={15}
+                alt="previous"
+                className=" bg-white rounded-full w-9 h-9"
+              />
+            </h2>
             <Image
               src={`/${prod_disp}`}
               alt="Product"
@@ -86,7 +118,20 @@ export default function Home() {
               height={500}
               className="md:rounded-xl"
             />
+            <h2
+              onClick={incrementMobile}
+              className="md:hidden absolute top-36 right-4 w-10 h-10 "
+            >
+              <Image
+                src={nextIcon}
+                width={15}
+                height={15}
+                alt="next"
+                className=" bg-white rounded-full w-9 h-9"
+              />
+            </h2>
           </div>
+          {/* Small images */}
           <div className="hidden md:flex ml-4">
             {PROD.tnails.map((img, index) => (
               <Image
@@ -168,7 +213,11 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {showModal && <Modal modalShow={modalShow} />}
+      {showModal && (
+        <div className="hidden md:block">
+          <Modal modalShow={modalShow} />
+        </div>
+      )}
     </main>
   );
 }
