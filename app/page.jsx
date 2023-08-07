@@ -93,7 +93,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex w-full md:w-[80%] min-h-screen flex-col items-center">
+    <main className="flex w-full md:w-[80%] h-fit flex-col items-center">
       <div className="flex flex-col md:flex-row md:mt-24 w-full md:w-[90%] h-[600px]">
         {/* left */}
         <div className="flex flex-col w-full md:w-1/2">

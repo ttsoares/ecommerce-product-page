@@ -85,7 +85,7 @@ const Header = () => {
           </svg>
           {showCart &&
             (headerCart.length === 0 ? (
-              <div className="flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
+              <div className="z-10 flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
                 <div className="font-bold text-left h-12 flex my-auto text-lg  border-b-2 border-gray-200">
                   <p className="ml-3">Cart</p>
                 </div>
@@ -97,7 +97,7 @@ const Header = () => {
                 </div>
               </div>
             ) : (
-              <div className="flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
+              <div className="z-10 flex flex-col w-[360px] md:w-96 h-80 md:h-72 bg-white absolute top-20 -left-[201px]  md:top-12 md:-right-24 shadow-xl rounded-xl">
                 <div className="flex flex-col w-full">
                   <div className="font-bold items-center text-left h-12 flex my-auto text-lg mb-3  border-b-2 border-gray-200">
                     <p className="ml-3">Cart</p>
