@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${kumbh.className} flex flex-col items-center h-screen w-screen`}
+        className={`${kumbh.className} flex flex-col items-center min-h-screen w-screen`}
       >
         <Header />
         {children}
